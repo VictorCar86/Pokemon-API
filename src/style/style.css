@@ -25,6 +25,15 @@ html {
     background-color: #ff380c;
     height: 100vh;
 }
+.pokemon-info__pokemonImg {
+    position: absolute;
+    top: 28%;
+    left: 35%;
+    /* display: block; */
+    /* margin: 210px auto 0; */
+    width: 250px;
+    z-index: 1;
+}
 .pokemon-info__circle {
     position: absolute;
     background-color: #ff8268;
