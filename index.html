@@ -13,7 +13,7 @@
 <body>
     <header class="header-pokedex">
         <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokéAPI Logo">
-        <h1>Consulta todos los pokémon que quieras</h1>
+        <h1 id="pokemonName"></h1>
     </header>
     <main class="main-pokedex">
         <section class="main-pokedex__pokemon-info">
@@ -27,28 +27,34 @@
                         <section class="pokemon-info__description">
                             <div class="pokemon-info__description__grid">
                                 <div class="box-stats">
-                                    <span class="hp-image"></span>
-                                    <span class="stat-hp" id="stat-hp"></span>
+                                    <span class="box-stats__image box-stats__image--hp-image"></span>
+                                    <span>Health</span>
+                                    <span class="stat-number" id="stat-hp"></span>
                                 </div>
                                 <div class="box-stats">
-                                    <span class="attack-image"></span>
-                                    <span class="stat-attack" id="stat-attack"></span>
+                                    <span class="box-stats__image box-stats__image--attack-image"></span>
+                                    <span>Attack</span>
+                                    <span class="stat-number" id="stat-attack"></span>
                                 </div>
                                 <div class="box-stats">
-                                    <span class="defense-image"></span>
-                                    <span class="stat-defense" id="stat-defense"></span>
+                                    <span class="box-stats__image box-stats__image--defense-image"></span>
+                                    <span>Defense</span>
+                                    <span class="stat-number" id="stat-defense"></span>
                                 </div>
                                 <div class="box-stats">
-                                    <span class="sp-attack-image"></span>
-                                    <span class="stat-special-attack" id="stat-special-attack"></span>
+                                    <span class="box-stats__image box-stats__image--sp-attack-image"></span>
+                                    <span>Sp-Attack</span>
+                                    <span class="stat-number" id="stat-special-attack"></span>
                                 </div>
                                 <div class="box-stats">
-                                    <span class="sp-defense-image"></span>
-                                    <span class="stat-special-defense" id="stat-special-defense"></span>
+                                    <span class="box-stats__image box-stats__image--sp-defense-image"></span>
+                                    <span>Sp-Defense</span>
+                                    <span class="stat-number" id="stat-special-defense"></span>
                                 </div>
                                 <div class="box-stats">
-                                    <span class="speed-image"></span>
-                                    <span class="stat-speed" id="stat-speed"></span>
+                                    <span class="box-stats__image box-stats__image--speed-image"></span>
+                                    <span>Speed</span>
+                                    <span class="stat-number" id="stat-speed"></span>
                                 </div>
                                 <article class="pokemon-box-info" id="pokemon-box-info"></article>
                             </div>
