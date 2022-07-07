@@ -27,16 +27,19 @@ html {
     margin-top: 8px;
 }
 
+.main-pokedex__pokemon-info {
+    position: relative;
+}
 .pokemon-info__backgroundPokedex {
     background-color: #ff380c;
-    height: 100vh;
+    height: 150vh;
 }
 .pokemon-info__border {
     display: flex;
     flex-direction: column;
     justify-content: end;
     width: 100%;
-    height: 100%;
+    height: 760px;
     border: 6px solid #ff380c;
 }
 .pokemon-info__container {
@@ -45,7 +48,7 @@ html {
     align-items: center;
     position: relative;
     width: 100%;
-    height: 596px;
+    height: 700px;
     overflow: hidden;
 }
 .pokemon-info__containerImgs {
@@ -53,7 +56,7 @@ html {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 10%;
+    top: 14%;
     z-index: 1;
 }
 .pokemon-info__pokemonImg {
@@ -73,7 +76,7 @@ html {
     position: absolute;
     background-color: #ff8268;
     width: 1000px;
-    height: 355px;
+    height: 420px;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     bottom: 0;
@@ -81,14 +84,13 @@ html {
 .pokemon-info__description {
     position: absolute;
     width: 100%;
-    height: 100vh;
     top: 51%;
     z-index: 1;
 }
 .pokemon-info__description__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(80px, 20%));
-    grid-template-rows: 80px 80px 95px;
+    grid-template-rows: 80px 80px auto;
     justify-content: center;
 }
 .box-stats {
@@ -100,16 +102,6 @@ html {
     border-radius: 10px;
     font-size: 1.4rem;
 }
-.pokemon-box-info {
-    grid-row: 3/4;
-    grid-column: 1/4;
-    background-color: white;
-    border-radius: 10px;
-    margin: 2px 7px;
-    padding: 10px;
-    font-size: 1.4rem;
-}
-
 .box-stats__image {
     display: inline-block;
     width: 24px;
@@ -144,4 +136,49 @@ html {
 .stat-number {
     font-size: 1.7rem;
     font-weight: bold;
+}
+.pokemon-box-info {
+    grid-row: 3/4;
+    grid-column: 1/4;
+    background-color: white;
+    border-radius: 10px;
+    margin: 2px 7px;
+    padding: 10px;
+    font-size: 1.4rem;
+    font-style: italic;
+}
+.pokemon-box-info__about {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-bottom: 4px;
+    text-align: center;
+    font-style: normal;
+}
+
+.pokeball-random {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 10px;
+    right: 12px;
+    z-index: 1;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: all 1s;
+    animation-name: pokeball;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+.pokeball-random:active {
+    transform: scale(1.1);
+}
+@keyframes pokeball {
+    10% {
+        transform: translateY(-10px);
+    }
+    20% {
+        transform: translateY(0);
+    }
 }
