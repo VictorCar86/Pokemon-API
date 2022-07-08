@@ -1,14 +1,16 @@
-const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/"
+const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/";
 
-const pokemonName = document.getElementById("pokemonName")
+const pokemonName = document.getElementById("pokemonName");
 const pokemonImg = document.getElementById("pokemonImg");
-const statBox_HP = document.getElementById("stat-hp")
-const statBox_ATTACK = document.getElementById("stat-attack")
-const statBox_DEFENSE = document.getElementById("stat-defense")
-const statBox_SP_ATTACK = document.getElementById("stat-special-attack")
-const statBox_SP_DEFENSE = document.getElementById("stat-special-defense")
-const statBox_SPEED = document.getElementById("stat-speed")
-const pokemonDescription = document.getElementById("pokemon-description")
+const statBox_HP = document.getElementById("stat-hp");
+const statBox_ATTACK = document.getElementById("stat-attack");
+const statBox_DEFENSE = document.getElementById("stat-defense");
+const statBox_SP_ATTACK = document.getElementById("stat-special-attack");
+const statBox_SP_DEFENSE = document.getElementById("stat-special-defense");
+const statBox_SPEED = document.getElementById("stat-speed");
+const pokemonDescription = document.getElementById("pokemon-description");
+
+const inputSearcher = document.getElementById("searcher");
 
 async function pokemonFetch(pokemon = 1){
     try {
@@ -51,4 +53,9 @@ function randomPokemon(){
     rnd()
     if (random > 898) rnd()
     else pokemonFetch(random)
+}
+
+function searchPokemon(){
+    const value = inputSearcher.value.toLowerCase()
+    pokemonFetch(value)
 }
