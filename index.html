@@ -14,13 +14,31 @@
     <header class="header-pokedex">
         <img class="pokeapi-img" src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokéAPI Logo">
         <h1 id="pokemonName"></h1>
-        <a href="#searcher">
-            <svg class="searcher-shortcut" xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet" fill="white" alt="Searcher icon">
-                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                    <path d="M1940 5079 c-493 -25 -971 -242 -1334 -605 -295 -295 -496 -674 -570 -1075 -168 -910 277 -1807 1104 -2228 454 -231 994 -284 1489 -145 177 50 429 163 557 252 l59 40 605 -602 c546 -545 611 -606 670 -635 305 -147 651 109 591 437 -24 130 -23 129 -680 786 l-608 608 82 161 c138 272 201 499 226 802 44 550 -154 1119 -535 1533 -193 211 -404 365 -661 484 -154 71 -211 92 -354 128 -214 54 -401 71 -641 59z m355 -684 c555 -91 1005 -512 1133 -1060 108 -461 -25 -943 -353 -1284 -270 -280 -622 -431 -1007 -431 -371 0 -721 146 -987 411 -196 197 -323 433 -383 712 -31 146 -31 399 1 546 82 384 296 696 621 906 166 108 344 172 570 208 66 11 323 6 405 -8z"/>
-                </g>
-            </svg>
-        </a>
+        <svg class="searcher-icon" id="searcherIcon" xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet" fill="white" alt="Searcher icon">
+            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
+                <path d="M1940 5079 c-493 -25 -971 -242 -1334 -605 -295 -295 -496 -674 -570 -1075 -168 -910 277 -1807 1104 -2228 454 -231 994 -284 1489 -145 177 50 429 163 557 252 l59 40 605 -602 c546 -545 611 -606 670 -635 305 -147 651 109 591 437 -24 130 -23 129 -680 786 l-608 608 82 161 c138 272 201 499 226 802 44 550 -154 1119 -535 1533 -193 211 -404 365 -661 484 -154 71 -211 92 -354 128 -214 54 -401 71 -641 59z m355 -684 c555 -91 1005 -512 1133 -1060 108 -461 -25 -943 -353 -1284 -270 -280 -622 -431 -1007 -431 -371 0 -721 146 -987 411 -196 197 -323 433 -383 712 -31 146 -31 399 1 546 82 384 296 696 621 906 166 108 344 172 570 208 66 11 323 6 405 -8z"/>
+            </g>
+        </svg>
+        <article class="searcher-container">
+            <div class="searcher-background">
+                <div class="input-container">
+                    <svg class="cross-icon" onclick="closeModalSearcher()" xmlns="http://www.w3.org/2000/svg" version="1.0" fill="white" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
+                            <path d="M395 5076 c-170 -41 -316 -188 -355 -356 -28 -120 -7 -261 54 -364 14 -23 419 -435 900 -916 l876 -875 -888 -890 c-956 -958 -930 -929 -967 -1070 -29 -115 -13 -234 47 -347 94 -177 315 -263 549 -214 140 30 103 -3 1054 947 484 483 885 879 890 879 5 0 406 -395 890 -879 816 -815 885 -881 945 -909 207 -96 457 -57 600 94 135 142 166 360 78 543 -29 61 -99 133 -927 958 l-896 891 871 874 c543 544 881 890 897 918 44 78 60 152 55 259 -6 115 -30 185 -93 269 -123 163 -346 232 -540 166 -111 -37 -161 -84 -1029 -953 l-850 -850 -875 872 c-941 936 -918 916 -1056 952 -69 18 -160 18 -230 1z"/>
+                        </g>
+                    </svg>
+                    <input type="text" class="input-container__searcher" id="searcher-input">
+                    <button type="button" class="input-container__button" onclick="searchPokemon()">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet" fill="black" alt="Search icon">
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
+                                <path d="M1940 5079 c-493 -25 -971 -242 -1334 -605 -295 -295 -496 -674 -570 -1075 -168 -910 277 -1807 1104 -2228 454 -231 994 -284 1489 -145 177 50 429 163 557 252 l59 40 605 -602 c546 -545 611 -606 670 -635 305 -147 651 109 591 437 -24 130 -23 129 -680 786 l-608 608 82 161 c138 272 201 499 226 802 44 550 -154 1119 -535 1533 -193 211 -404 365 -661 484 -154 71 -211 92 -354 128 -214 54 -401 71 -641 59z m355 -684 c555 -91 1005 -512 1133 -1060 108 -461 -25 -943 -353 -1284 -270 -280 -622 -431 -1007 -431 -371 0 -721 146 -987 411 -196 197 -323 433 -383 712 -31 146 -31 399 1 546 82 384 296 696 621 906 166 108 344 172 570 208 66 11 323 6 405 -8z"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+                <div class="searcher-background__close-modal-div" id="closeModalDiv"></div>
+            </div>
+        </article>
     </header>
     <main class="main-pokedex">
         <section class="main-pokedex__pokemon-info">
@@ -74,7 +92,7 @@
                 </div>
             </div>
             <aside class="pokeball-random" onclick="randomPokemon()">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Pokéball" x="0px" y="0px" viewBox="0 0 595.3 594.1" style="enable-background:new 0 0 595.3 594.1;" xml:space="preserve">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Pokéball" x="0px" y="0px" viewBox="0 0 595.3 594.1" xml:space="preserve">
                     <style type="text/css">
                         .st0{fill:#FFFFFF;}
                         .st1{fill:#DFDFDF;}
@@ -96,17 +114,10 @@
         </section>
         <section class="search-pokemon-section">
             <img class="pikachu-icon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu icon">
-            <h2 class="search-pokemon-section__title">¡Look for the pokémon you want!</h2>
-            <div class="input-container">
-                <input type="text" class="input-container__searcher" id="searcher" onclick="searchPokemon()">
-                <button type="button" class="input-container__button" onclick="searchPokemon()">
-                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet" fill="black" alt="Search icon">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                            <path d="M1940 5079 c-493 -25 -971 -242 -1334 -605 -295 -295 -496 -674 -570 -1075 -168 -910 277 -1807 1104 -2228 454 -231 994 -284 1489 -145 177 50 429 163 557 252 l59 40 605 -602 c546 -545 611 -606 670 -635 305 -147 651 109 591 437 -24 130 -23 129 -680 786 l-608 608 82 161 c138 272 201 499 226 802 44 550 -154 1119 -535 1533 -193 211 -404 365 -661 484 -154 71 -211 92 -354 128 -214 54 -401 71 -641 59z m355 -684 c555 -91 1005 -512 1133 -1060 108 -461 -25 -943 -353 -1284 -270 -280 -622 -431 -1007 -431 -371 0 -721 146 -987 411 -196 197 -323 433 -383 712 -31 146 -31 399 1 546 82 384 296 696 621 906 166 108 344 172 570 208 66 11 323 6 405 -8z"/>
-                        </g>
-                    </svg>
-                </button>
-            </div>
+            <h2 class="search-pokemon-section__title">¡Look for your pokémon!</h2>
+            <article>
+                
+            </article>
         </section>
     </main>
     <footer class="footer-pokedex">

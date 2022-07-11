@@ -26,13 +26,70 @@ html {
     text-transform: capitalize;
     margin-top: 8px;
 }
-.searcher-shortcut {
+.searcher-icon {
     display: block;
     position: absolute;
     width: 25px;
     height: 25px;
     top: 30px;
-    right: 30px;
+    right: 10%;
+    cursor: pointer;
+}
+.searcher-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+.searcher-background {
+    background-color: #ff390c53;
+    height: 100vh;
+}
+.searcher-background__close-modal-div {
+    width: 100%;
+    height: 100%;
+}
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    background-color: #c42b09;
+}
+.cross-icon {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    top: 27px;
+    left: 5%;
+    cursor: pointer;
+}
+.input-container__searcher {
+    height: 38px;
+    width: 170px;
+    outline: none;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    font-family: 'Gantari';
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+.input-container__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    width: 40px;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #e4e3e3;
+}
+.search-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .main-pokedex__pokemon-info {
@@ -60,6 +117,7 @@ html {
     width: 100%;
     height: 700px;
     overflow: hidden;
+    z-index: 0;
 }
 .pokemon-info__container-imgs {
     display: flex;
@@ -203,6 +261,7 @@ html {
     border-left: 6px solid #ff380c;
     border-right: 6px solid #ff380c;
     background-color: #ff8268;
+    z-index: 0;
 }
 .pikachu-icon {
     position: absolute;
@@ -216,34 +275,11 @@ html {
     font-size: 1.8rem;
     color: white;
 }
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+
+.display {
+    display: block;
 }
-.input-container__searcher {
-    height: 30px;
-    width: 170px;
-    outline: none;
-    border: none;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    padding-left: 10px;
-    font-family: 'Gantari';
-    font-weight: bold;
-    font-size: 1.6rem;
-}
-.input-container__button {
-    height: 30px;
-    width: 40px;
-    border: none;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    background-color: #e4e3e3;
-}
-.search-icon {
-    width: 18px;
-    height: 18px;
-    padding-top: 2px;
+
+.no-display {
+    display: none;
 }

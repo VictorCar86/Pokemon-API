@@ -10,7 +10,14 @@ const statBox_SP_DEFENSE = document.getElementById("stat-special-defense");
 const statBox_SPEED = document.getElementById("stat-speed");
 const pokemonDescription = document.getElementById("pokemon-description");
 
-const inputSearcher = document.getElementById("searcher");
+const searcherIcon = document.getElementById("searcherIcon")
+const searcherContainer = document.querySelector(".searcher-container");
+const inputSearcher = document.getElementById("searcher-input");
+const closeModalDiv = document.getElementById("closeModalDiv")
+
+closeModalDiv.onclick = closeModalSearcher
+searcherIcon.onclick = openModalSearcher
+window.addEventListener("DOMContentLoaded", closeModalSearcher, false)
 
 async function pokemonFetch(pokemon = 1){
     try {
@@ -58,4 +65,15 @@ function randomPokemon(){
 function searchPokemon(){
     const value = inputSearcher.value.toLowerCase()
     pokemonFetch(value)
+}
+
+function openModalSearcher() {
+    searcherContainer.classList.remove("no-display")
+    searcherContainer.classList.add("display")
+}
+
+function closeModalSearcher() {
+    searcherContainer.classList.remove("display")
+    searcherContainer.classList.add("no-display")
+    inputSearcher.value = ""
 }
