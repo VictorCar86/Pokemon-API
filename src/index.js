@@ -57,7 +57,7 @@ async function mainPokemon(pokemon = 1){
 }
 mainPokemon()
 
-let pokemonListCount = 0;
+let pokemonListCount = 490;
 async function pokemonList(){
     const firstData = await pokemonFetch(POKEMON_V2_API + "?limit=10&offset=" + pokemonListCount);
     console.log(firstData)
@@ -68,23 +68,30 @@ async function pokemonList(){
         const pokemonImg = document.createElement("img");
         pokemonImg.src = dataPokemon.sprites.front_default;
         pokemonImg.alt = "Image of " + dataPokemon.name;
+        pokemonImg.classList.add("list-pokemon-img")
         pokemonArticleContainer.appendChild(pokemonImg);
+        pokemonArticleContainer.classList.add("pokemon-list-container__info")
+
+        const pokemonSpanId = document.createElement("span");
+        pokemonSpanId.textContent = "#" + dataPokemon.id;
+        pokemonSpanId.classList.add("list-pokemon-id")
+        pokemonArticleContainer.appendChild(pokemonSpanId);
 
         const pokemonSpanName = document.createElement("span");
         pokemonSpanName.textContent = dataPokemon.name;
+        pokemonSpanName.classList.add("list-pokemon-name")
         pokemonArticleContainer.appendChild(pokemonSpanName);
 
-        const pokemonSpanId = document.createElement("span");
-        pokemonSpanId.textContent = dataPokemon.id;
-        pokemonArticleContainer.appendChild(pokemonSpanId);
-
+        const pokemonTypeContainer = document.createElement("div")
         dataPokemon.types.forEach(element => {
             const pokemonSpan = document.createElement("span");
             pokemonSpan.textContent = element.type.name;
             pokemonSpan.classList.add("list-pokemon-type");
             pokemonSpan.classList.add(element.type.name);
-            pokemonArticleContainer.appendChild(pokemonSpan);
+            pokemonTypeContainer.appendChild(pokemonSpan);
         })
+        pokemonTypeContainer.style.textAlign = "center"
+        pokemonArticleContainer.appendChild(pokemonTypeContainer);
 
         pokemonsListContainer.appendChild(pokemonArticleContainer)
     })

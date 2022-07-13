@@ -1,3 +1,24 @@
+:root {
+    --grass: #9bcc50;
+    --poison: #b97fc9;
+    --fire: #fd7d24;
+    --water: #4592c4;
+    --bug: #729f3f;
+    --flying: #0fd6b7;
+    --normal: #a4acaf;
+    --electric: #eed535;
+    --ground: #6a3115;
+    --fairy: #fdb9e9;
+    --fighting: #e15600;
+    --psychic: #da43bc;
+    --rock: #a38c21;
+    --steel: #659294;
+    --ice: #50c3e7;
+    --ghost: #7b62a3;
+    --dragon: #f1826e;
+    --dark: #6d00da;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,6 +27,13 @@
 html {
     font-size: 62.5%;
     font-family: 'Gantari', sans-serif;
+}
+
+.display {
+    display: block;
+}
+.no-display {
+    display: none;
 }
 
 .header-pokedex {
@@ -257,7 +285,7 @@ html {
 
 .search-pokemon-section {
     position: relative;
-    height: 100vh;
+    height: 140vh;
     border-left: 6px solid #ff380c;
     border-right: 6px solid #ff380c;
     background-color: #ff8268;
@@ -278,14 +306,97 @@ html {
 
 .pokemon-list-container {
     display: grid;
-    grid-template-columns: 150px 150px;
+    grid-template-columns: 140px 140px;
     justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
-
-.display {
-    display: block;
+.pokemon-list-container__info {
+    display: grid;
+    justify-content: center;
+    background-color: #fffffff2;
+    border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 15px -10px rgb(0 0 0 / 70%);
+    box-shadow: 5px 5px 15px -10px rgb(0 0 0 / 70%);
 }
-
-.no-display {
-    display: none;
+.list-pokemon-img {
+    margin: 10px 22px;
+    background-color: #cccccc;
+    border-radius: 10px;
+}
+.list-pokemon-id {
+    color: #747474;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding-left: 20px;
+}
+.list-pokemon-name {
+    color: #454545;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.list-pokemon-type {
+    display: inline-block;
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    padding: 1px 3px;
+    margin: 8px 3px;
+}
+.grass {
+    background-color: var(--grass);
+}
+.poison {
+    background-color: var(--poison);
+}
+.fire {
+    background-color: var(--fire);
+}
+.water {
+    background-color: var(--water);
+}
+.bug {
+    background-color: var(--bug);
+}
+.flying {
+    background-color: var(--flying);
+}
+.normal {
+    background-color: var(--normal);
+}
+.electric {
+    background-color: var(--electric);
+    color: rgb(80, 80, 80);
+}
+.ground {
+    background-color: var(--ground);
+}
+.fairy {
+    background-color: var(--fairy);
+    color: rgb(80, 80, 80);
+}
+.fighting {
+    background-color: var(--fighting);
+}
+.psychic {
+    background-color: var(--psychic);
+}
+.rock {
+    background-color: var(--rock);
+}
+.steel {
+    background-color: var(--steel);
+}
+.ice {
+    background-color: var(--ice);
+}
+.ghost {
+    background-color: var(--ghost);
+}
+.dragon {
+    background-color: var(--dragon);
+}
+.dark {
+    background-color: var(--dark);
 }
