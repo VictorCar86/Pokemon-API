@@ -1,15 +1,17 @@
 const POKEMON_V2_API = "https://pokeapi.co/api/v2/pokemon/";
 const POKEMON_SPECIES_API = "https://pokeapi.co/api/v2/pokemon-species/";
 
-const pokemonName = document.getElementById("pokemonName");
-const pokemonImg = document.getElementById("pokemonImg");
+const mainPokemonName = document.getElementById("mainPokemonName");
+const mainPokemonId = document.getElementById("mainPokemonId")
+const mainPokemonImg = document.getElementById("mainPokemonImg");
+const mainPokemonType = document.getElementById("mainPokemonType");
+const mainPokemonDescription = document.getElementById("mainPokemonDescription");
 const statBox_HP = document.getElementById("stat-hp");
 const statBox_ATTACK = document.getElementById("stat-attack");
 const statBox_DEFENSE = document.getElementById("stat-defense");
 const statBox_SP_ATTACK = document.getElementById("stat-special-attack");
 const statBox_SP_DEFENSE = document.getElementById("stat-special-defense");
 const statBox_SPEED = document.getElementById("stat-speed");
-const pokemonDescription = document.getElementById("pokemon-description");
 
 const searcherIcon = document.getElementById("searcherIcon");
 const searcherContainer = document.querySelector(".searcher-container");
@@ -38,18 +40,30 @@ async function mainPokemon(pokemon = 1){
         console.log(data)
 
         // Adding images and info to HTML
-        pokemonName.textContent = data.name
-        pokemonImg.src = data.sprites.other["official-artwork"].front_default
-        pokemonImg.alt = `Picture of ${data.name}`
-        statBox_HP.textContent = data.stats[0].base_stat
-        statBox_ATTACK.textContent = data.stats[1].base_stat
-        statBox_DEFENSE.textContent = data.stats[2].base_stat
-        statBox_SP_ATTACK.textContent = data.stats[3].base_stat
-        statBox_SP_DEFENSE.textContent = data.stats[4].base_stat
-        statBox_SPEED.textContent = data.stats[5].base_stat
+        mainPokemonName.textContent = data.name;
+        mainPokemonId.textContent = "#" + data.id;
+        mainPokemonImg.src = data.sprites.other["official-artwork"].front_default;
+        mainPokemonImg.alt = `Picture of ${data.name}`;
+
+        mainPokemonType.innerText = "";
+        data.types.forEach(typePokemon => {
+            const pokemonTypeSpan = document.createElement("span");
+            pokemonTypeSpan.textContent = typePokemon.type.name
+            pokemonTypeSpan.classList.add(typePokemon.type.name)
+            pokemonTypeSpan.classList.add("pokemon-main-type")
+            mainPokemonType.appendChild(pokemonTypeSpan)
+        })
+
+        statBox_HP.textContent = data.stats[0].base_stat;
+        statBox_ATTACK.textContent = data.stats[1].base_stat;
+        statBox_DEFENSE.textContent = data.stats[2].base_stat;
+        statBox_SP_ATTACK.textContent = data.stats[3].base_stat;
+        statBox_SP_DEFENSE.textContent = data.stats[4].base_stat;
+        statBox_SPEED.textContent = data.stats[5].base_stat;
+
         const englishDescription = await pokemonFetch(POKEMON_SPECIES_API + pokemon);
         const englishText = englishDescription.flavor_text_entries.filter(object => object.language.name === "en")
-        pokemonDescription.textContent = englishText[0].flavor_text.replace("\f"," ")
+        mainPokemonDescription.textContent = englishText[0].flavor_text.replace("\f"," ")
 
     } catch (error){
         console.log(error)
@@ -58,19 +72,20 @@ async function mainPokemon(pokemon = 1){
 mainPokemon()
 
 let pokemonListCount = 490;
-async function pokemonList(){
-    const firstData = await pokemonFetch(POKEMON_V2_API + "?limit=10&offset=" + pokemonListCount);
+async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
+    const firstData = await pokemonFetch(page);
     console.log(firstData)
     firstData.results.forEach(async (data_element) => {
         const dataPokemon = await pokemonFetch(data_element.url);
 
         const pokemonArticleContainer = document.createElement("article");
-        const pokemonImg = document.createElement("img");
-        pokemonImg.src = dataPokemon.sprites.front_default;
-        pokemonImg.alt = "Image of " + dataPokemon.name;
-        pokemonImg.classList.add("list-pokemon-img")
-        pokemonArticleContainer.appendChild(pokemonImg);
+        const pokemonListImg = document.createElement("img");
+        pokemonListImg.src = dataPokemon.sprites.front_default;
+        pokemonListImg.alt = "Image of " + dataPokemon.name;
+        pokemonListImg.classList.add("list-pokemon-img")
+        pokemonArticleContainer.appendChild(pokemonListImg);
         pokemonArticleContainer.classList.add("pokemon-list-container__info")
+        pokemonArticleContainer.onclick = () => mainPokemon(dataPokemon.id)
 
         const pokemonSpanId = document.createElement("span");
         pokemonSpanId.textContent = "#" + dataPokemon.id;
@@ -105,6 +120,7 @@ pokemonList()
 //         alert("There's no pokémons to show 😢")
 //     }
 // }
+// "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10".includes("offset=10")
 
 function randomPokemon(){
     let random = 0;
