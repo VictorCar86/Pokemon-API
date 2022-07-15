@@ -14,7 +14,7 @@ const statBox_SP_DEFENSE = document.getElementById("stat-special-defense");
 const statBox_SPEED = document.getElementById("stat-speed");
 
 const searcherIcon = document.getElementById("searcherIcon");
-const searcherContainer = document.querySelector(".searcher-container");
+const searcherContainer = document.getElementById("searcherContainer");
 const inputSearcher = document.getElementById("searcher-input");
 const closeModalDiv = document.getElementById("closeModalDiv");
 
@@ -22,7 +22,6 @@ const pokemonsListContainer = document.getElementById("pokemonsListContainer");
 
 closeModalDiv.onclick = closeModalSearcher
 searcherIcon.onclick = openModalSearcher
-window.addEventListener("DOMContentLoaded", closeModalSearcher, false)
 
 async function pokemonFetch(info){
     try {
@@ -39,7 +38,6 @@ async function mainPokemon(pokemon = 1){
         const data = await pokemonFetch(POKEMON_V2_API + pokemon)
         console.log(data)
 
-        // Adding images and info to HTML
         mainPokemonName.textContent = data.name;
         mainPokemonId.textContent = "#" + data.id;
         mainPokemonImg.src = data.sprites.other["official-artwork"].front_default;
@@ -71,21 +69,30 @@ async function mainPokemon(pokemon = 1){
 }
 mainPokemon()
 
-let pokemonListCount = 490;
+let pokemonNextPagePosition = "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10";
+let pokemonPrevPagePosition = null;
+
 async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
     const firstData = await pokemonFetch(page);
+    pokemonNextPagePosition = firstData.next
+    pokemonPrevPagePosition = firstData.previous
+    pokemonsListContainer.innerText = "";
     console.log(firstData)
+
     firstData.results.forEach(async (data_element) => {
         const dataPokemon = await pokemonFetch(data_element.url);
 
-        const pokemonArticleContainer = document.createElement("article");
         const pokemonListImg = document.createElement("img");
+        const pokemonArticleContainer = document.createElement("article");
         pokemonListImg.src = dataPokemon.sprites.front_default;
         pokemonListImg.alt = "Image of " + dataPokemon.name;
         pokemonListImg.classList.add("list-pokemon-img")
         pokemonArticleContainer.appendChild(pokemonListImg);
         pokemonArticleContainer.classList.add("pokemon-list-container__info")
-        pokemonArticleContainer.onclick = () => mainPokemon(dataPokemon.id)
+        pokemonArticleContainer.onclick = () => {
+            mainPokemon(dataPokemon.id)
+            setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 400)
+        }
 
         const pokemonSpanId = document.createElement("span");
         pokemonSpanId.textContent = "#" + dataPokemon.id;
@@ -113,21 +120,33 @@ async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
 }
 pokemonList()
 
-// function newPagePokemonList(next = true){
-//     if (!pokemonListCount < 0 || !pokemonListCount > 890){
-//     next
-//     } else {
-//         alert("There's no pokémons to show 😢")
-//     }
-// }
+function newPagePokemonList(next = true){
+    if (next){
+        if (!pokemonNextPagePosition.includes("offset=900")){
+            pokemonList(pokemonNextPagePosition);
+        } else {
+            alert("This is the maximum amount of pokémons to show 😢");
+        }
+    } else {
+        if (pokemonPrevPagePosition != null){
+            pokemonList(pokemonPrevPagePosition);
+        } else {
+            alert("There's no pokémons to show 😢");
+        }
+    }
+}
 // "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10".includes("offset=10")
 
 function randomPokemon(){
     let random = 0;
     const rnd = () => random = Math.floor(Math.random() * 900)
     rnd()
-    if (random > 898) rnd()
-    else mainPokemon(random)
+    if (random > 898){
+        rnd()
+    } else {
+        mainPokemon(random)
+    }
+    setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 400)
 }
 
 function searchPokemon(){
@@ -136,12 +155,14 @@ function searchPokemon(){
 }
 
 function openModalSearcher() {
-    searcherContainer.classList.remove("no-display")
-    searcherContainer.classList.add("display")
+    searcherContainer.style.animationName = "modal-on"
+    searcherContainer.style.display = "block"
 }
 
 function closeModalSearcher() {
-    searcherContainer.classList.remove("display")
-    searcherContainer.classList.add("no-display")
-    inputSearcher.value = "";
+    searcherContainer.style.animationName = "modal-off"
+    setTimeout(() => {
+        searcherContainer.style.display = "none"
+        inputSearcher.value = "";
+    }, 500)
 }

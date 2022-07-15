@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="header-pokedex">
-        <img class="pokeapi-img" src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokéAPI Logo">
+        <img class="pokeapi-img" id="pokeapiImg" src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokéAPI Logo">
         <h1 class="pokemon-main-name" id="mainPokemonName"></h1>
         <span class="pokemon-main-id" id="mainPokemonId"></span>
         <svg class="searcher-icon" id="searcherIcon" xmlns="http://www.w3.org/2000/svg" version="1.0" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet" fill="white" alt="Searcher icon">
@@ -102,8 +102,12 @@
 
             <div class="pokemon-list-container" id="pokemonsListContainer"></div>
 
+            <div>
+                <button type="button" onclick="newPagePokemonList(false)">Prev Pokémons</button>
+                <button type="button" onclick="newPagePokemonList(true)">Next Pokémons</button>
+            </div>
         </section>
-        <article class="searcher-container">
+        <article class="searcher-container" id="searcherContainer">
             <div class="searcher-background">
                 <div class="input-container">
                     <svg class="cross-icon" onclick="closeModalSearcher()" xmlns="http://www.w3.org/2000/svg" version="1.0" fill="white" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
