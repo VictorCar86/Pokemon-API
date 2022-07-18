@@ -96,15 +96,15 @@
                 </svg>
             </aside>
         </section>
-        <section class="search-pokemon-section">
+        <section class="pokemon-list-section">
             <img class="pikachu-icon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu icon">
-            <h2 class="search-pokemon-section__title">¡Look for your pokémon!</h2>
+            <h2 class="pokemon-list-section__title">¡Look for your pokémon!</h2>
 
             <div class="pokemon-list-container" id="pokemonsListContainer"></div>
 
-            <div>
-                <button type="button" onclick="newPagePokemonList(false)">Prev Pokémons</button>
-                <button type="button" onclick="newPagePokemonList(true)">Next Pokémons</button>
+            <div class="pokemon-list-section__buttons">
+                <button class="list-pokemon-buttons" type="button" onclick="newPagePokemonList(false)">Prev Pokémons</button>
+                <button class="list-pokemon-buttons" type="button" onclick="newPagePokemonList(true)">Next Pokémons</button>
             </div>
         </section>
         <article class="searcher-container" id="searcherContainer">
@@ -130,13 +130,13 @@
     </main>
     <footer class="footer-pokedex">
         <span>VictorCar86</span>
-        <a href="#">
-            <span></span>
-            <span>GitHub</span>
+        <a href="https://github.com/VictorCar86" target="_blank">
+            <img src="./assets/github.png" alt="GitHub Logo">
+            <span class="footer-pokedex__span">GitHub</span>
         </a>
-        <a href="#">
-            <span></span>
-            <span>Twitter</span>
+        <a href="https://twitter.com/victorcar86_" target="_blank">
+            <img src="./assets/twitter.png" alt="Twitter Logo">
+            <span class="footer-pokedex__span">Twitter</span>
         </a>
     </footer>
     <script src="./src/index.js"></script>

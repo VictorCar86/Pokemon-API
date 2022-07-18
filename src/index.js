@@ -36,7 +36,7 @@ async function pokemonFetch(info){
 async function mainPokemon(pokemon = 1){
     try {
         const data = await pokemonFetch(POKEMON_V2_API + pokemon)
-        console.log(data)
+        // console.log(data)
 
         mainPokemonName.textContent = data.name;
         mainPokemonId.textContent = "#" + data.id;
@@ -77,10 +77,11 @@ async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
     pokemonNextPagePosition = firstData.next
     pokemonPrevPagePosition = firstData.previous
     pokemonsListContainer.innerText = "";
-    console.log(firstData)
+    console.log("FD -> ", firstData)
 
     firstData.results.forEach(async (data_element) => {
         const dataPokemon = await pokemonFetch(data_element.url);
+        console.log(data_element)
 
         const pokemonListImg = document.createElement("img");
         const pokemonArticleContainer = document.createElement("article");
@@ -153,6 +154,10 @@ function searchPokemon(){
     const value = inputSearcher.value.toLowerCase()
     mainPokemon(value)
 }
+
+inputSearcher.addEventListener("keydown", key => {
+    if (key.code == "Enter") searchPokemon()
+})
 
 function openModalSearcher() {
     searcherContainer.style.animationName = "modal-on"
