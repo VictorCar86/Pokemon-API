@@ -1,0 +1,20 @@
+{
+  "name": "pokeapi-vanilla-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorCar86/Pokemon-API.git"
+  },
+  "keywords": [],
+  "author": "VictorCar86",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorCar86/Pokemon-API/issues"
+  },
+  "homepage": "https://github.com/VictorCar86/Pokemon-API#readme"
+}
