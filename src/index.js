@@ -77,11 +77,11 @@ async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
     pokemonNextPagePosition = firstData.next
     pokemonPrevPagePosition = firstData.previous
     pokemonsListContainer.innerText = "";
-    console.log("FD -> ", firstData)
+    // console.log("FD -> ", firstData)
 
     firstData.results.forEach(async (data_element) => {
         const dataPokemon = await pokemonFetch(data_element.url);
-        console.log(data_element)
+        // console.log(data_element)
 
         const pokemonListImg = document.createElement("img");
         const pokemonArticleContainer = document.createElement("article");
@@ -136,7 +136,6 @@ function newPagePokemonList(next = true){
         }
     }
 }
-// "https://pokeapi.co/api/v2/pokemon?offset=10&limit=10".includes("offset=10")
 
 function randomPokemon(){
     let random = 0;

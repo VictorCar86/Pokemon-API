@@ -1,0 +1,8 @@
+.pokemon-list-section__title {
+    font-size: 2rem;
+}
+.pokemon-list-container {
+    height: 393px;
+    grid-template-columns: repeat(5, 140px);
+    gap: 8px;
+}
