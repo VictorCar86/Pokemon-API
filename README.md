@@ -5,7 +5,11 @@ This project is a webpage thought for display every Pokémon with their stats an
 The tools used were HTML, CSS and Vanilla JavaScript.
 #
 
-### 🔎 Search for your favorites pokémon, look their stats, types and watch their official images.
+### 🔎 Search for your favorites pokémon within a huge amount avaliable to watch!!
+
+<img src="https://user-images.githubusercontent.com/96636507/180585405-6c958b0b-6c5b-4d89-86df-2d9a32e79fe0.gif" width="900px">
+
+### 🔠 Look their stats, types and watch their official images with great quality.
 
 <img src="https://user-images.githubusercontent.com/96636507/180126257-5ad18633-bd0b-4747-b4bb-727f65b2fb9e.png" width="350px">
 
