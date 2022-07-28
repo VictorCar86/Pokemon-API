@@ -7,7 +7,7 @@ The tools used were HTML, CSS and Vanilla JavaScript.
 
 ### 🔎 Search for your favorites pokémon within a huge amount avaliable to watch!!
 
-<img src="https://user-images.githubusercontent.com/96636507/180585405-6c958b0b-6c5b-4d89-86df-2d9a32e79fe0.gif" width="900px">
+<img src="https://user-images.githubusercontent.com/96636507/180585405-6c958b0b-6c5b-4d89-86df-2d9a32e79fe0.gif" width="800px">
 
 ### 🔠 Look their stats, types and watch their official images with great quality.
 
