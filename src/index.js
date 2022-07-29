@@ -15,8 +15,11 @@ const statBox_SPEED = document.getElementById("stat-speed");
 
 const searcherIcon = document.getElementById("searcherIcon");
 const searcherContainer = document.getElementById("searcherContainer");
-const inputSearcher = document.getElementById("searcher-input");
+const inputSearcher = document.getElementById("searcherInput");
 const closeModalDiv = document.getElementById("closeModalDiv");
+
+const modalAlertContainer = document.getElementById("modalAlertContainer");
+const modalAlertDescription = document.getElementById("modalAlertDescription")
 
 const pokemonsListContainer = document.getElementById("pokemonsListContainer");
 
@@ -26,6 +29,9 @@ searcherIcon.onclick = openModalSearcher
 async function pokemonFetch(info){
     try {
         const response = await fetch(info)
+        if (response.status === 404) {
+            openModalAlert("That Pokémon doesn't exist 😢")
+        }
         const data = await response.json()
         return data;
     } catch (error){
@@ -126,32 +132,28 @@ function newPagePokemonList(next = true){
         if (!pokemonNextPagePosition.includes("offset=900")){
             pokemonList(pokemonNextPagePosition);
         } else {
-            alert("This is the maximum amount of pokémons to show 😢");
+            openModalAlert("There's no more Pokémons to show 😢");
         }
     } else {
         if (pokemonPrevPagePosition != null){
             pokemonList(pokemonPrevPagePosition);
         } else {
-            alert("There's no pokémons to show 😢");
+            openModalAlert("There's no Pokémons to show 😢");
         }
     }
 }
 
 function randomPokemon(){
-    let random = 0;
-    const rnd = () => random = Math.floor(Math.random() * 900)
-    rnd()
-    if (random > 898){
-        rnd()
-    } else {
-        mainPokemon(random)
-    }
+    const random = Math.floor((Math.random() * 899) + 1)
+    mainPokemon(random)
     setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 400)
 }
 
 function searchPokemon(){
-    const value = inputSearcher.value.toLowerCase()
-    mainPokemon(value)
+    if (inputSearcher.value !== "") {
+        const value = inputSearcher.value.toLowerCase()
+        mainPokemon(value)
+    }
 }
 
 inputSearcher.addEventListener("keydown", key => {
@@ -169,4 +171,19 @@ function closeModalSearcher() {
         searcherContainer.style.display = "none"
         inputSearcher.value = "";
     }, 500)
+}
+
+function openModalAlert(message){
+    document.body.style.overflow = "hidden"
+    modalAlertContainer.style.display = "flex"
+    modalAlertContainer.style.animationName = "modal-on"
+    modalAlertDescription.textContent = message
+}
+
+function closeModalAlert(){
+    document.body.style.overflow = "scroll"
+    modalAlertContainer.style.animationName = "modal-off"
+    setTimeout(() => {
+        modalAlertContainer.style.display = "none"
+    }, 200)
 }

@@ -119,6 +119,10 @@ body {
     top: 27px;
     left: 5%;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.cross-icon:active {
+    fill: #a4a4a4;
 }
 .input-container__searcher {
     height: 38px;
@@ -142,6 +146,9 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: #e4e3e3;
+}
+.input-container__button:active {
+    background-color: #a4a4a4;
 }
 .search-icon {
     width: 20px;
@@ -426,6 +433,54 @@ body {
 }
 .list-pokemon-buttons:active {
     transform: scale(0.9);
+}
+
+.modal-alert-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ff390c53;
+    z-index: 1;
+
+    animation-name: modal-on;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+.modal-alert-container__info {
+    display: inline-block;
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: rgb(0 0 0 / 70%) 5px 5px 15px -10px;
+}
+.modal-alert-container__message {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 20px;
+    transform: translateY(25px);
+}
+.modal-alert-container__button {
+    height: 40px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff380c;
+    color: white;
+    font-weight: bold;
+    transform: translateY(40px);
+}
+.modal-alert-container__button:active {
+    transform: scale(0.9) translateY(43px);
+    transition-duration: 0.1s;
 }
 
 .footer-pokedex {
