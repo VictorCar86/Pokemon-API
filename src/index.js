@@ -174,14 +174,16 @@ function closeModalSearcher() {
 }
 
 function openModalAlert(message){
-    document.body.style.overflow = "hidden"
+    if (window.innerWidth < 768) {
+        document.body.style.overflow = "hidden"
+    }
     modalAlertContainer.style.display = "flex"
     modalAlertContainer.style.animationName = "modal-on"
     modalAlertDescription.textContent = message
 }
 
 function closeModalAlert(){
-    document.body.style.overflow = "scroll"
+    document.body.style.overflow = ""
     modalAlertContainer.style.animationName = "modal-off"
     setTimeout(() => {
         modalAlertContainer.style.display = "none"
