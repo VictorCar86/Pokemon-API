@@ -21,8 +21,6 @@ const closeModalDiv = document.getElementById("closeModalDiv");
 const modalAlertContainer = document.getElementById("modalAlertContainer");
 const modalAlertDescription = document.getElementById("modalAlertDescription")
 
-const pokemonsListContainer = document.getElementById("pokemonsListContainer");
-
 closeModalDiv.onclick = closeModalSearcher
 searcherIcon.onclick = openModalSearcher
 
@@ -82,36 +80,38 @@ async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
     const firstData = await pokemonFetch(page);
     pokemonNextPagePosition = firstData.next
     pokemonPrevPagePosition = firstData.previous
-    pokemonsListContainer.innerText = "";
     // console.log("FD -> ", firstData)
 
-    firstData.results.forEach(async (data_element) => {
+    firstData.results.forEach(async (data_element, index) => {
         const dataPokemon = await pokemonFetch(data_element.url);
         // console.log(data_element)
 
-        const pokemonListImg = document.createElement("img");
-        const pokemonArticleContainer = document.createElement("article");
-        pokemonListImg.src = dataPokemon.sprites.front_default;
-        pokemonListImg.alt = "Image of " + dataPokemon.name;
-        pokemonListImg.classList.add("list-pokemon-img")
-        pokemonArticleContainer.appendChild(pokemonListImg);
+        // Pokemon article container
+        const pokemonArticleContainer = document.getElementById(`pokemonArtCont#${index}`);
         pokemonArticleContainer.classList.add("pokemon-list-container__info")
         pokemonArticleContainer.onclick = () => {
             mainPokemon(dataPokemon.id)
             setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 400)
         }
+        // Pokemon list img
+        const pokemonListImg = document.getElementById(`pokemonListImg#${index}`);
+        pokemonListImg.src = dataPokemon.sprites.front_default;
+        pokemonListImg.alt = "Image of " + dataPokemon.name;
+        pokemonListImg.classList.add("list-pokemon-img")
 
-        const pokemonSpanId = document.createElement("span");
+        // Pokemon ID
+        const pokemonSpanId = document.getElementById(`pokemonSpanId#${index}`);
         pokemonSpanId.textContent = "#" + dataPokemon.id;
         pokemonSpanId.classList.add("list-pokemon-id")
-        pokemonArticleContainer.appendChild(pokemonSpanId);
 
-        const pokemonSpanName = document.createElement("span");
+        // Pokemon name
+        const pokemonSpanName = document.getElementById(`pokemonSpanName#${index}`);
         pokemonSpanName.textContent = dataPokemon.name;
         pokemonSpanName.classList.add("list-pokemon-name")
-        pokemonArticleContainer.appendChild(pokemonSpanName);
 
-        const pokemonTypeContainer = document.createElement("div")
+        // Pokemon type
+        const pokemonTypeContainer = document.getElementById(`pokemonTypeContainer#${index}`)
+        pokemonTypeContainer.innerHTML = "";
         dataPokemon.types.forEach(element => {
             const pokemonSpan = document.createElement("span");
             pokemonSpan.textContent = element.type.name;
@@ -119,10 +119,6 @@ async function pokemonList(page = POKEMON_V2_API + "?limit=10&offset=0"){
             pokemonSpan.classList.add(element.type.name);
             pokemonTypeContainer.appendChild(pokemonSpan);
         })
-        pokemonTypeContainer.style.textAlign = "center"
-        pokemonArticleContainer.appendChild(pokemonTypeContainer);
-
-        pokemonsListContainer.appendChild(pokemonArticleContainer)
     })
 }
 pokemonList()

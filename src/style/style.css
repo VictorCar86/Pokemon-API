@@ -365,6 +365,7 @@ body {
 }
 .pokemon-list-container__info {
     display: grid;
+    grid-template-rows: 116px 17px 19px 37px;
     justify-content: center;
     background-color: #fffffff2;
     border-radius: 15px;
